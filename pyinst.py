@@ -14,6 +14,8 @@ if OS_NAME == 'Windows':
     )
 elif OS_NAME == 'Darwin':
     pass
+elif OS_NAME == 'Linux':
+    pass
 else:
     raise Exception('{OS_NAME} is not supported')
 

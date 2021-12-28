@@ -39,6 +39,7 @@ import traceback
 import xml.etree.ElementTree
 import zlib
 import mimetypes
+import certifi
 
 from .compat import (
     compat_HTMLParseError,
@@ -886,6 +887,7 @@ def make_HTTPS_handler(params, **kwargs):
     context = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
     context.check_hostname = opts_check_certificate
     context.verify_mode = ssl.CERT_REQUIRED if opts_check_certificate else ssl.CERT_NONE
+    context.load_verify_locations(certifi.where(), None)
     if opts_check_certificate:
         try:
             context.load_default_certs()
